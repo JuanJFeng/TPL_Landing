@@ -154,6 +154,11 @@ body {
 
 /* Media Query for mobile */
 @media (max-width: 768px) {
+
+  input, textarea, select, button {
+    font-size: 16px; /* Ensure at least 16px font size to prevent zoom */
+  }
+
   .nav {
     flex-direction: column;
     align-items: center;
@@ -183,6 +188,17 @@ body {
     flex-direction: column; 
     align-items: center; 
     width: 90%;
+  }
+
+  .modal {
+    overflow-y: auto;
+  }
+
+  .modal-content {
+    max-width: 90%; 
+    max-height: 90vh; 
+    overflow-y: auto; 
+    position: relative;
   }
 
 }
