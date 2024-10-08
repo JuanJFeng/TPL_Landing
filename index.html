@@ -89,6 +89,12 @@
       }
     }
 
+    window.ontouchstart = function (event) {
+      if (event.target == modal) {
+        closeModal();
+      }
+    }
+
     // Handle modal close and reset
     function closeModal() {
       modal.style.display = "none";
@@ -128,7 +134,7 @@
       errorMessage.style.visibility = "visible";
       passwordInput.value = "";
     }
-    
+
     // Brevo
     document.getElementById("subscribe-form").addEventListener("submit", function (event) {
       event.preventDefault();  // Prevent default form submission
