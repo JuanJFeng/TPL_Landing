@@ -145,6 +145,11 @@ body {
 
 .error-message.visible {
   visibility: visible; 
+  font-size: var(--font-body);
+}
+
+.form-message {
+  margin-top: 10px;
 }
 
 /* Media Query for mobile */
