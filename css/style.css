@@ -154,7 +154,11 @@ body {
     align-items: center;
   }
   .password {
-    padding-top: 30px;
+    padding-top: 20px;
+  }
+
+  .center-content{
+    height: 40vh;
   }
 
   .lemons-img {
