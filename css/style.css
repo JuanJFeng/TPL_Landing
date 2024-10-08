@@ -35,7 +35,7 @@ body {
 
 .password button {
   background: none;
-  border: 1px solid var(--pink-color);
+  border: 0px solid var(--pink-color);
   padding: 5px 15px;
   color: var(--pink-color);
   font-size: var(--font-body);
