@@ -30,13 +30,15 @@
 
     <div class="newsletter">
       <p class="signup">Sign up to be the first to access our upcoming releases</p>
-      <form action="https://YOUR_MAILCHIMP_URL" method="post" class="subscribe-form">
+      <form id="subscribe-form" class="subscribe-form">
         <div class="input-wrapper">
-          <input type="email" name="EMAIL" placeholder="Email Address" required>
+          <input type="email" id="email" placeholder="Email Address" required>
           <button type="submit">SUBSCRIBE</button>
         </div>
       </form>
+      <p id="form-message"></p>
     </div>
+
 
   </div>
 
@@ -126,6 +128,39 @@
       errorMessage.style.visibility = "visible";
       passwordInput.value = "";
     }
+    // Brevo
+    document.getElementById("subscribe-form").addEventListener("submit", function (event) {
+      event.preventDefault();  // Prevent default form submission
+
+      var email = document.getElementById("email").value;
+
+      var data = {
+        email: email,
+        listIds: [2],  // Replace with your Brevo list ID
+        updateEnabled: false
+      };
+
+      fetch('https://api.brevo.com/v3/contacts', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'api-key': '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'  // Replace with your Brevo API key
+        },
+        body: JSON.stringify(data)
+      })
+        .then(response => response.json())
+        .then(data => {
+          if (data.id) {
+            document.getElementById("form-message").textContent = "Subscription successful!";
+          } else {
+            document.getElementById("form-message").textContent = "An error occurred. Please try again.";
+          }
+        })
+        .catch((error) => {
+          document.getElementById("form-message").textContent = "Error: " + error.message;
+        });
+    });
+
 
   </script>
 </body>
