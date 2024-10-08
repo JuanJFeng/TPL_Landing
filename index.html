@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>The Pink Lemonade</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" type="image/png" href="assets/favico.png">
+</head>
+
+<body>
+  <div class="nav">
+    <div class="logo">
+      <img src="assets/TPL_logo.png" alt="The Pink Lemonade Logo" class="logo-img">
+    </div>
+
+    <div class="password">
+      <button id="passwordBtn">ENTER USING PASSWORD</button>
+    </div>
+  </div>
+
+  <div class="main-content">
+
+    <div class="center-content">
+      <img src="assets/lemons.png" alt="lemons" class="lemons-img">
+      <p class="coming-soon">The online shop is opening soon.</p>
+    </div>
+
+    <div class="newsletter">
+      <p class="signup">Sign up to be the first to access our upcoming releases</p>
+      <form action="https://YOUR_MAILCHIMP_URL" method="post" class="subscribe-form">
+        <div class="input-wrapper">
+          <input type="email" name="EMAIL" placeholder="Email Address" required>
+          <button type="submit">SUBSCRIBE</button>
+        </div>
+      </form>
+    </div>
+
+  </div>
+
+  <div id="passwordModal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <p class="signup">ENTER STORE USING PASSWORD</p>
+
+      <form class="password-form">
+        <div class="input-wrapper">
+          <input type="password" id="passwordInput" placeholder="Password" required>
+          <button id="enterPasswordBtn" type="button">Enter</button>
+        </div>
+      </form>
+
+      <p id="errorMessage" class="error-message">Incorrect password. Please try again.</p>
+    </div>
+  </div>
+
+  <script>
+    // Password
+    const correctPassword = "1234";
+
+    // Get the modal elements
+    const modal = document.getElementById("passwordModal");
+    const btn = document.getElementById("passwordBtn");
+    const span = document.getElementsByClassName("close")[0];
+    const enterPasswordBtn = document.getElementById("enterPasswordBtn");
+    const passwordInput = document.getElementById("passwordInput");
+    const errorMessage = document.getElementById("errorMessage");
+
+    // Open the modal on button click
+    btn.onclick = function () {
+      modal.style.display = "flex";
+      passwordInput.focus();
+      resetModalState();
+    }
+
+    // Close the modal when clicking X
+    span.onclick = function () {
+      closeModal();
+    }
+
+    // Close the modal when clicking outside
+    window.onclick = function (event) {
+      if (event.target == modal) {
+        closeModal();
+      }
+    }
+
+    // Handle modal close and reset
+    function closeModal() {
+      modal.style.display = "none";
+      resetModalState();
+    }
+
+    // Reset error message and password input
+    function resetModalState() {
+      errorMessage.classList.remove("visible");
+      errorMessage.textContent = "";
+      errorMessage.style.visibility = "hidden";
+      passwordInput.value = "";
+    }
+
+    // Validate password 
+    enterPasswordBtn.onclick = function () {
+      const enteredPassword = passwordInput.value.trim();
+
+      // Check if the input is empty
+      if (enteredPassword === "") {
+        showErrorMessage("Please enter a password.");
+        return;
+      }
+
+      // Validate password 
+      if (enteredPassword === correctPassword) {
+        window.location.href = "https://www.francescovullo.com/";
+      } else {
+        showErrorMessage("Incorrect password. Please try again.");
+      }
+    }
+
+    // Show error message
+    function showErrorMessage(message) {
+      errorMessage.classList.add("visible");
+      errorMessage.textContent = message;
+      errorMessage.style.visibility = "visible";
+      passwordInput.value = "";
+    }
+
+  </script>
+</body>
+
+</html>
