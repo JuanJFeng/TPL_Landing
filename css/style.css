@@ -158,7 +158,7 @@ body {
   input, textarea, select, button {
     font-size: 16px; /* Ensure at least 16px font size to prevent zoom */
   }
-
+  
   .nav {
     flex-direction: column;
     align-items: center;
