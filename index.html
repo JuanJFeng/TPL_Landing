@@ -28,155 +28,154 @@
         enter using password
       </button>
     </div>
+  </div>
 
-    <div class="main-content">
+  <div class="main-content">
 
-      <div class="center-content">
-        <p class="coming-soon">The online store is opening soon.</p>
-      </div>
-
-      <div class="newsletter">
-        <p class="signup">Sign up to be the first to access our upcoming releases</p>
-        <form id="subscribe-form" class="subscribe-form">
-          <div class="input-wrapper">
-            <input type="email" id="email" placeholder="Email Address" required>
-            <button type="submit">SUBSCRIBE</button>
-          </div>
-        </form>
-        <p id="form-message"></p>
-      </div>
-
-
+    <div class="center-content">
+      <p class="coming-soon">The online store is opening soon.</p>
     </div>
 
-    <div id="passwordModal" class="modal">
-      <div class="modal-content">
-        <span class="close">&times;</span>
-        <p class="signup">ENTER STORE USING PASSWORD</p>
-
-        <form class="password-form">
-          <div class="input-wrapper">
-            <input type="password" id="passwordInput" placeholder="Password" required>
-            <button id="enterPasswordBtn" type="button">Enter</button>
-          </div>
-        </form>
-
-        <p id="errorMessage" class="error-message">Incorrect password. Please try again.</p>
-      </div>
+    <div class="newsletter">
+      <p class="signup">Sign up to be the first to access our upcoming releases</p>
+      <form id="subscribe-form" class="subscribe-form">
+        <div class="input-wrapper">
+          <input type="email" id="email" placeholder="Email Address" required>
+          <button type="submit">SUBSCRIBE</button>
+        </div>
+      </form>
+      <p id="form-message"></p>
     </div>
+  </div>
 
-    <script>
-      // Password
-      const correctPassword = "1234";
+  <div id="passwordModal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <p class="signup">ENTER STORE USING PASSWORD</p>
 
-      // Get the modal elements
-      const modal = document.getElementById("passwordModal");
-      const btn = document.getElementById("passwordBtn");
-      const span = document.getElementsByClassName("close")[0];
-      const enterPasswordBtn = document.getElementById("enterPasswordBtn");
-      const passwordInput = document.getElementById("passwordInput");
-      const errorMessage = document.getElementById("errorMessage");
+      <form class="password-form">
+        <div class="input-wrapper">
+          <input type="password" id="passwordInput" placeholder="Password" required>
+          <button id="enterPasswordBtn" type="button">Enter</button>
+        </div>
+      </form>
 
-      // Open the modal on button click
-      btn.onclick = function () {
-        modal.style.display = "flex";
-        passwordInput.focus();
-        resetModalState();
-      }
+      <p id="errorMessage" class="error-message">Incorrect password. Please try again.</p>
+    </div>
+  </div>
 
-      // Close the modal when clicking X
-      span.onclick = function () {
+  <script>
+    // Password
+    const correctPassword = "1234";
+
+    // Get the modal elements
+    const modal = document.getElementById("passwordModal");
+    const btn = document.getElementById("passwordBtn");
+    const span = document.getElementsByClassName("close")[0];
+    const enterPasswordBtn = document.getElementById("enterPasswordBtn");
+    const passwordInput = document.getElementById("passwordInput");
+    const errorMessage = document.getElementById("errorMessage");
+
+    // Open the modal on button click
+    btn.onclick = function () {
+      modal.style.display = "flex";
+      passwordInput.focus();
+      resetModalState();
+    }
+
+    // Close the modal when clicking X
+    span.onclick = function () {
+      closeModal();
+    }
+
+    // Close the modal when clicking outside
+    window.onclick = function (event) {
+      if (event.target == modal) {
         closeModal();
       }
+    }
 
-      // Close the modal when clicking outside
-      window.onclick = function (event) {
-        if (event.target == modal) {
-          closeModal();
-        }
+    window.ontouchstart = function (event) {
+      if (event.target == modal) {
+        closeModal();
       }
+    }
 
-      window.ontouchstart = function (event) {
-        if (event.target == modal) {
-          closeModal();
-        }
-      }
+    // Handle modal close and reset
+    function closeModal() {
+      modal.style.display = "none";
+      resetModalState();
+    }
 
-      // Handle modal close and reset
-      function closeModal() {
-        modal.style.display = "none";
-        resetModalState();
-      }
+    // Reset error message and password input
+    function resetModalState() {
+      errorMessage.classList.remove("visible");
+      errorMessage.textContent = "";
+      errorMessage.style.visibility = "hidden";
+      passwordInput.value = "";
+    }
 
-      // Reset error message and password input
-      function resetModalState() {
-        errorMessage.classList.remove("visible");
-        errorMessage.textContent = "";
-        errorMessage.style.visibility = "hidden";
-        passwordInput.value = "";
+    // Validate password 
+    enterPasswordBtn.onclick = function () {
+      const enteredPassword = passwordInput.value.trim();
+
+      // Check if the input is empty
+      if (enteredPassword === "") {
+        showErrorMessage("Please enter a password.");
+        return;
       }
 
       // Validate password 
-      enterPasswordBtn.onclick = function () {
-        const enteredPassword = passwordInput.value.trim();
-
-        // Check if the input is empty
-        if (enteredPassword === "") {
-          showErrorMessage("Please enter a password.");
-          return;
-        }
-
-        // Validate password 
-        if (enteredPassword === correctPassword) {
-          window.location.href = "https://www.francescovullo.com/";
-        } else {
-          showErrorMessage("Incorrect password. Please try again.");
-        }
+      if (enteredPassword === correctPassword) {
+        window.location.href = "https://www.francescovullo.com/";
+      } else {
+        showErrorMessage("Incorrect password. Please try again.");
       }
+    }
 
-      // Show error message
-      function showErrorMessage(message) {
-        errorMessage.classList.add("visible");
-        errorMessage.textContent = message;
-        errorMessage.style.visibility = "visible";
-        passwordInput.value = "";
-      }
+    // Show error message
+    function showErrorMessage(message) {
+      errorMessage.classList.add("visible");
+      errorMessage.textContent = message;
+      errorMessage.style.visibility = "visible";
+      passwordInput.value = "";
+    }
 
-      // Brevo
-      document.getElementById("subscribe-form").addEventListener("submit", function (event) {
-        event.preventDefault();  // Prevent default form submission
+    // Brevo
+    document.getElementById("subscribe-form").addEventListener("submit", function (event) {
+      event.preventDefault();  // Prevent default form submission
 
-        var email = document.getElementById("email").value;
+      var email = document.getElementById("email").value;
 
-        var data = {
-          email: email,
-          listIds: [2],  // Replace with your Brevo list ID
-          updateEnabled: false
-        };
+      var data = {
+        email: email,
+        listIds: [2],  // Replace with your Brevo list ID
+        updateEnabled: false
+      };
 
-        fetch('https://api.brevo.com/v3/contacts', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            'api-key': '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'  // Replace with your Brevo API key
-          },
-          body: JSON.stringify(data)
+      fetch('https://api.brevo.com/v3/contacts', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'api-key': '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'  // Replace with your Brevo API key
+        },
+        body: JSON.stringify(data)
+      })
+        .then(response => response.json())
+        .then(data => {
+          if (data.id) {
+            document.getElementById("form-message").textContent = "Subscription successful!";
+          } else {
+            document.getElementById("form-message").textContent = "An error occurred. Please try again.";
+          }
         })
-          .then(response => response.json())
-          .then(data => {
-            if (data.id) {
-              document.getElementById("form-message").textContent = "Subscription successful!";
-            } else {
-              document.getElementById("form-message").textContent = "An error occurred. Please try again.";
-            }
-          })
-          .catch((error) => {
-            document.getElementById("form-message").textContent = "Error: " + error.message;
-          });
-      });
+        .catch((error) => {
+          document.getElementById("form-message").textContent = "Error: " + error.message;
+        });
+    });
 
 
-    </script>
+  </script>
 </body>
 
 </html>
