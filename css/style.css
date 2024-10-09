@@ -169,7 +169,8 @@ body {
   }
 
   .center-content{
-    height: 40vh;
+    height: 30vh;
+    min-height: 300px;
   }
 
   .lemons-img {
