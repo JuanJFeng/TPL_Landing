@@ -205,10 +205,6 @@ body {
 /* Media Query for mobile */
 @media (max-width: 768px) {
 
-  body {
-    height: 100vh;
-  }
-
   .input-wrapper input[type="email"],
   .input-wrapper input[type="password"] {
     font-size: 16px;
