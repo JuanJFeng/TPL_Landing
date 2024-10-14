@@ -4,20 +4,31 @@
   --font-body: 10pt;
 }
 
+@font-face {
+  font-family: 'Outfit';
+  src: url('../font/Outfit-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-input, textarea, select, button {
+input,
+textarea,
+select,
+button {
   border: none;
   border-radius: 0;
   outline: none;
 }
 
 body {
-  font-family: 'Helvetica', sans-serif;
+  font-family: 'Outfit', sans-serif;
   background-color: #ffffff;
   color: var(--pink-color);
   text-align: center;
@@ -30,10 +41,11 @@ body {
 }
 
 .logo img {
-  width: 18px;
+  width: 250px;
 }
 
-.center-content {
+.main-content {
+  margin-top: 100px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -42,13 +54,21 @@ body {
   flex-direction: column;
 }
 
+.center-content {
+  margin-bottom: 10px;
+}
+
+.newsletter {
+  width: 100%;
+}
+
 .logo-img {
-  width: 300px;
+  width: 100px;
   height: auto;
 }
 
 .center-content img {
-  margin-bottom: 10px;
+  margin-bottom: 50px;
 }
 
 .password button {
@@ -71,27 +91,23 @@ body {
   vertical-align: middle;
 }
 
-.main-content {
-  margin-top: 100px;
-}
-
 .lemons-img {
   width: 300px;
   margin: 20px;
 }
 
 .coming-soon {
-  font-size: var(--font-body);
+  font-size: var(--font-title);
 }
 
 .signup {
-  font-size: var(--font-body);
-  margin-bottom: 20px;
+  font-size: var(--font-title);
+  margin-bottom: 50px;
 }
 
 .subscribe-form {
   width: 100%;
-  max-width: 600px;
+  max-width: 650px;
   margin: 0 auto;
 }
 
@@ -153,6 +169,7 @@ body {
 .modal-content {
   padding: 20px;
   border-radius: 10px;
+  width: 50%;
 }
 
 .close {
@@ -181,8 +198,8 @@ body {
   margin-top: 10px;
 }
 
-.newsletter {
-  margin-top: 80px;
+#mobile-signup {
+  display: none;
 }
 
 /* Media Query for mobile */
@@ -190,16 +207,17 @@ body {
 
   .input-wrapper input[type="email"],
   .input-wrapper input[type="password"] {
-    font-size: 14px;
+    font-size: 16px;
     padding: 8px 100px 8px 15px;
   }
 
   .signup {
-    font-size: 14px;
+    font-size: 16px;
+    margin-bottom: 40px;
   }
 
   .coming-soon {
-    font-size: 14px;
+    font-size: 16px;
   }
 
   .nav {
@@ -216,18 +234,20 @@ body {
   .center-content {
     height: auto;
     min-height: auto;
-  }
-
-  .newsletter {
-    margin-top: 5px;
+    margin-bottom: 30px;
   }
 
   .main-content {
-    margin-top: 30vh;
+    margin-top: 80px;
+    padding: 10px;
+  }
+
+  .modal-content {
+    width: 100%;
   }
 
   .logo-img {
-    width: 90%;
+    width: 30%;
   }
 
   .lemons-img {
@@ -238,9 +258,15 @@ body {
   .subscribe-form {
     flex-direction: column;
     align-items: center;
-    width: 90%;
+    width: 100%;
+  }
+
+  #mobile-signup {
+    display: block;
+  }
+
+  #desktop-signup {
+    display: none;
   }
 
 }
-
-
