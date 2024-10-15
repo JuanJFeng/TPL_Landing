@@ -6,7 +6,14 @@
 
 @font-face {
   font-family: 'Outfit';
-  src: url('../font/Outfit-Regular.ttf') format('truetype');
+  src: url('../font/Outfit-Light.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Outfit-light';
+  src: url('../font/Outfit-ExtraLight.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
 }
@@ -101,6 +108,7 @@ body {
 }
 
 .signup {
+  font-family: 'Outfit-light', sans-serif;
   font-size: var(--font-title);
   margin-bottom: 50px;
 }
