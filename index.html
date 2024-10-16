@@ -39,8 +39,9 @@
 
     <div class="newsletter">
       <p class="signup" id="desktop-signup">Sign up to be the first to access our upcoming releases</p>
-      <p class="signup" id="mobile-signup">Sign up to be the first 
-        <br>to access our upcoming releases</p>
+      <p class="signup" id="mobile-signup">Sign up to be the first
+        <br>to access our upcoming releases
+      </p>
       <form id="subscribe-form" class="subscribe-form">
         <div class="input-wrapper">
           <input type="email" id="email" placeholder="Email Address" required>
@@ -54,7 +55,7 @@
   <div id="passwordModal" class="modal">
     <div class="modal-content">
       <span class="close">&times;</span>
-      <p class="signup">Enter Store using password:</p>
+      <p class="signup">Enter store using password:</p>
 
       <form class="password-form">
         <div class="input-wrapper">
@@ -69,7 +70,7 @@
 
   <script>
     // Password
-    const correctPassword = "1234";
+    const correctPassword = "TPL1624";
 
     // Get the modal elements
     const modal = document.getElementById("passwordModal");
@@ -130,7 +131,7 @@
 
       // Validate password 
       if (enteredPassword === correctPassword) {
-        window.location.href = "https://www.francescovullo.com/";
+        window.location.href = "https://www.instagram.com/the.pinklemonade/";
       } else {
         showErrorMessage("Incorrect password. Please try again.");
       }
@@ -176,7 +177,6 @@
           document.getElementById("form-message").textContent = "Error: " + error.message;
         });
     });
-
 
   </script>
 </body>
