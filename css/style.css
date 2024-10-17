@@ -41,6 +41,11 @@ body {
   text-align: center;
 }
 
+input, button {
+  font-family: Helvetica, sans-serif;
+  letter-spacing: 0.005em;
+}
+
 .nav {
   display: flex;
   justify-content: space-between;
@@ -130,6 +135,14 @@ body {
   border: none;
   color: #ffffff;
   cursor: pointer;
+}
+
+.email-consent {
+  color: var(--pink-color);
+  font-family: Helvetica, sans-serif;
+  letter-spacing: 0.015em;
+  font-size: 8.5pt;
+  margin-top: 15px;
 }
 
 .input-wrapper {
@@ -269,6 +282,11 @@ body {
   .lemons-img {
     width: 200px;
     margin: 10px;
+  }
+
+  .email-consent {
+    font-size: 6.8pt;
+    letter-spacing: 0.020em;
   }
 
   .subscribe-form {
