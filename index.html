@@ -14,6 +14,7 @@
   <meta property="og:type" content="website">
 
   <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://sibforms.com/forms/end-form/build/sib-styles.css">
   <link rel="icon" type="image/png" href="assets/favico.png">
 </head>
 
@@ -49,15 +50,64 @@
       <p class="signup" id="mobile-signup">Sign up to be the first
         <br>to access our upcoming releases
       </p>
-      <form id="subscribe-form" class="subscribe-form">
-        <div class="input-wrapper">
-          <input type="email" id="email" placeholder="Email Address" required>
-          <button type="submit">SUBSCRIBE</button>
-        </div>
-      </form>
-      <p id="form-message"></p>
-      <p class="email-consent">By subscribing, you agree to receive email marketing from us.</p> 
 
+
+
+
+      <div class="sib-form">
+        <div id="sib-form-container" class="sib-form-container">
+          <div id="sib-container" class="sib-container--large sib-container--vertical">
+            <form id="sib-form" method="POST"
+              action="https://45d51d4c.sibforms.com/serve/MUIFADqsFhYABGzCfhcLMWNnbEqqYSZhVvOR-yIQMbS8ohAo_wZi3YLN9y55-Lu_lVLi9Sw4eJVB-9rwIW6KLr9j5bkfgJYkRa76N3-MuJopHzgGglhAs1Cr_iWDMdBa869-sJkJOXYZW_5Bax5ciq1RSsaZSvnUe0K8HYL-2SS1WfzdqKHSOYrFQdzNTtojuX7jkWmKg4RQ1fo_"
+              data-type="subscription">
+
+              <div class="sib-input sib-form-block">
+                <div class="form__entry entry_block">
+                  <div class="form__label-row ">
+
+                    <div class="entry__field">
+                      <input class="input " type="text" id="EMAIL" name="EMAIL" autocomplete="off"
+                        placeholder="Email Address" data-required="true" required />
+
+                      <button class="sib-form-block__button sib-form-block__button-with-loader" form="sib-form"
+                        type="submit">
+                        <svg class="icon clickable__icon progress-indicator__icon sib-hide-loader-icon"
+                          viewBox="0 0 512 512">
+                          <path
+                            d="M460.116 373.846l-20.823-12.022c-5.541-3.199-7.54-10.159-4.663-15.874 30.137-59.886 28.343-131.652-5.386-189.946-33.641-58.394-94.896-95.833-161.827-99.676C261.028 55.961 256 50.751 256 44.352V20.309c0-6.904 5.808-12.337 12.703-11.982 83.556 4.306 160.163 50.864 202.11 123.677 42.063 72.696 44.079 162.316 6.031 236.832-3.14 6.148-10.75 8.461-16.728 5.01z" />
+                        </svg>
+                        SUBSCRIBE
+                      </button>
+                    </div>
+                  </div>
+
+                  <label class="entry__error entry__error--primary"></label>
+                </div>
+              </div>
+
+              <input type="text" name="email_address_check" value="" class="input--hidden">
+              <input type="hidden" name="locale" value="en">
+            </form>
+          </div>
+          <div id="error-message" class="sib-form-message-panel">
+            <div class="sib-form-message-panel__text sib-form-message-panel__text--center">
+              <span class="sib-form-message-panel__inner-text">Your subscription could not be saved. Please try
+                again.</span>
+            </div>
+          </div>
+
+          <div id="success-message" class="sib-form-message-panel">
+            <div class="sib-form-message-panel__text sib-form-message-panel__text--center">
+              <span class="sib-form-message-panel__inner-text">Subscription successful!</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+
+      <p class="email-consent">By subscribing, you agree to receive email marketing from us.</p>
     </div>
   </div>
 
@@ -154,40 +204,24 @@
       passwordInput.value = "";
     }
 
-    // Brevo
-    document.getElementById("subscribe-form").addEventListener("submit", function (event) {
-      event.preventDefault();  // Prevent default form submission
-
-      var email = document.getElementById("email").value;
-
-      var data = {
-        email: email,
-        listIds: [2],  // Replace with your Brevo list ID
-        updateEnabled: false
-      };
-
-      fetch('https://api.brevo.com/v3/contacts', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'api-key': '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'  
-        },
-        body: JSON.stringify(data)
-      })
-        .then(response => response.json())
-        .then(data => {
-          if (data.id) {
-            document.getElementById("form-message").textContent = "Subscription successful!";
-          } else {
-            document.getElementById("form-message").textContent = "An error occurred. Please try again.";
-          }
-        })
-        .catch((error) => {
-          document.getElementById("form-message").textContent = "Error: " + error.message;
-        });
-    });
-
   </script>
+  <script>
+    window.REQUIRED_CODE_ERROR_MESSAGE = 'Please choose a country code';
+    window.LOCALE = 'en';
+    window.EMAIL_INVALID_MESSAGE = window.SMS_INVALID_MESSAGE = "The information provided is invalid. ";
+    window.REQUIRED_ERROR_MESSAGE = "This field cannot be left blank. ";
+    window.GENERIC_INVALID_MESSAGE = "The information provided is invalid. ";
+    window.translation = {
+      common: {
+        selectedList: '{quantity} list selected',
+        selectedLists: '{quantity} lists selected'
+      }
+    };
+
+    var AUTOHIDE = Boolean(0);
+  </script>
+  <script defer src="https://sibforms.com/forms/end-form/build/main.js"></script>
+
 </body>
 
 </html>
