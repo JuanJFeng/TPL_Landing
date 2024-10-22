@@ -315,6 +315,7 @@ input, button {
   padding: 0 !important;
   max-width: 650px;
   margin: 0 auto !important;
+  width: 100%;
 }
 
 #sib-container {
