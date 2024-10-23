@@ -361,4 +361,8 @@ input, button {
   font-family: 'Outfit', sans-serif !important;
 }
 
+.sib-form-message-panel__inner-text {
+  color: #808080;
+}
+
 
